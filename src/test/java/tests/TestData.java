@@ -1,6 +1,6 @@
 package tests;
 
-public class TestData {
+public class TestData extends TestBase {
     public static String
             userId,
             token,

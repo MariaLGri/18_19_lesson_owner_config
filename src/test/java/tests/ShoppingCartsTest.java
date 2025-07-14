@@ -6,10 +6,8 @@ import models.AddBookRequestModel;
 import models.DeleteBookRequestModel;
 import models.IsbnModel;
 import org.junit.jupiter.api.DisplayName;
-
 import org.junit.jupiter.api.Test;
 import pages.ProfilePage;
-
 import java.util.List;
 import static com.codeborne.selenide.logevents.SelenideLogger.step;
 import static tests.TestData.*;
@@ -29,15 +27,14 @@ public class ShoppingCartsTest extends TestBase {
         AddBookRequestModel addBookData = new AddBookRequestModel(userId, isbns);
         DeleteBookRequestModel deleteBookData = new DeleteBookRequestModel(userId, bookISBN_1);
 
-        step("Удаление всех имеющихся в корзине книг", ApiHelpersBasket::deleteAllBooks);
+        step("Удаление всех имеющихся в корзине книг", () ->
+            ApiHelpersBasket.deleteAllBooks());
 
         step("Добавление книги в корзину", () ->
                 ApiHelpersBasket.addBook(addBookData));
 
-        step("Удаление книги из корзины", () -> {
-
-            ApiHelpersBasket.deleteBook(deleteBookData);
-        });
+        step("Удаление книги из корзины", () ->
+                ApiHelpersBasket.deleteBook(deleteBookData));
 
         profilePage
                 .openPage()

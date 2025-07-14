@@ -11,7 +11,7 @@ import static tests.TestData.title;
 
 public class ProfilePage {
     private final SelenideElement
-            booksTable = $(".ReactTable");
+            booksTable = $(".rt-table");
 
 
     @Step("Открываем страницу профиля")

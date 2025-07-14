@@ -1,8 +1,6 @@
-package helpers;
 
-import io.qameta.allure.Step;
+package helpers;
 import models.LoginRequestModel;
-import models.GenerateTokenResponseModel;
 import models.LoginResponseModel;
 
 import static config.ProjectConfig.getLogin;
@@ -29,19 +27,4 @@ public class ApiHelpersLogin {
                 .extract().as(LoginResponseModel.class);
     }
 
-    @Step("Генерация нового токена через API")
-    public static GenerateTokenResponseModel generateNewToken() {
-        System.out.println("Generating new token via /Account/v1/GenerateToken");
-        LoginRequestModel authData = new LoginRequestModel(getLogin(), getPassword());
-
-        return given()
-                .baseUri("https://demoqa.com")
-                .contentType(JSON)
-                .body(authData)
-                .when()
-                .post("/Account/v1/GenerateToken")
-                .then()
-                .statusCode(200)
-                .extract().as(GenerateTokenResponseModel.class);
-    }
 }

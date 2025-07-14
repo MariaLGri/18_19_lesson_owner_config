@@ -15,7 +15,6 @@ import helpers.Attach;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class TestBase {
-
     private static final WebConfig webConfig = ConfigReader.Instance.read();
     @BeforeAll
 
@@ -31,7 +30,8 @@ public class TestBase {
 
     @BeforeEach
     void setUpSettingsEach(){
-        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
+            SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
+
     }
 
     @AfterEach
